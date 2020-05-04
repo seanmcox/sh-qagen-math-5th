@@ -580,7 +580,10 @@ public class FifthGradeMathQuestionGenerator implements SubjectQuestionGenerator
 	
 	private static String simplifiedFraction(int numerator, int denominator) {
 		int gcd = gcd(numerator,denominator);
-		return ""+(numerator/gcd)+"/"+(denominator/gcd);
+		String retval = ""+(numerator/gcd)+"/"+(denominator/gcd);
+		if(retval.endsWith("/1"))
+			retval = retval.substring(0, retval.length()-2);
+		return retval;
 	}
 	
 	/**
@@ -653,7 +656,7 @@ public class FifthGradeMathQuestionGenerator implements SubjectQuestionGenerator
 						"<line x1=\"70\" y1=\"20\" x2=\"85\" y2=\"5\" style=\"stroke:rgb(0,0,0);stroke-width:2\" />\n"+
 						"<line x1=\"70\" y1=\"85\" x2=\"85\" y2=\"70\" style=\"stroke:rgb(0,0,0);stroke-width:2\" />\n"+
 						"<text x=\""+(35-4*widthText.length())+"\" y=\"84\">"+widthText+"</text>\n" +
-						"</svg>","image/svg+xml","What is the volume are of this cube in "+AREA_UNITS[unit]+"?","text/plain",""+answer,dimensions,4);
+						"</svg>","image/svg+xml","What is the volume are of this cube in "+VOLUME_UNITS[unit]+"?","text/plain",""+answer,dimensions,4);
 			}
 			return new Question("<svg width=\""+constrainingSquareLength+"\" height=\""+constrainingSquareLength+"\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n" + 
 					"<line x1=\"5\" y1=\"20\" x2=\"70\" y2=\"20\" style=\"stroke:rgb(0,0,0);stroke-width:2\" />\n"+
